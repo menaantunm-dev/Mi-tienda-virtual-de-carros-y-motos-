@@ -1,0 +1,77 @@
+/* Paleta y Fondo de la Aplicación */
+body {
+    background-color: #0b0b0e;
+    color: #ffffff;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Premium Card Architecture */
+.premium-card {
+    background-color: #121216 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease;
+    position: relative;
+}
+
+.premium-card:hover {
+    transform: translateY(-6px);
+    border-color: #ff007f !important;
+    box-shadow: 0 12px 30px rgba(255, 0, 127, 0.15);
+}
+
+/* Efecto de Zoom e Interacción en Imágenes */
+.card-img-wrapper {
+    overflow: hidden;
+    height: 220px;
+    cursor: pointer;
+    background-color: #1a1a22;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-img-wrapper:hover img {
+    transform: scale(1.08);
+}
+
+/* Insignia de Oferta Dinámica */
+.offer-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #ff0055, #ff007f);
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 20px;
+    z-index: 3;
+    box-shadow: 0 4px 10px rgba(255, 0, 127, 0.3);
+    letter-spacing: 0.5px;
+}
+
+/* Logotipos de Marcas del Fabricante en las Tarjetas */
+.brand-logo-card {
+    height: 25px;
+    max-width: 50px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+}
+
+/* Animaciones de Entrada Suave */
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

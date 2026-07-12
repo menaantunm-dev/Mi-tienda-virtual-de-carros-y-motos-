@@ -1,0 +1,86 @@
+{
+  "vehiculos": [
+    {
+      "codigo": 101,
+      "marca": "Lamborghini",
+      "modelo": "Aventador SVJ",
+      "categoria": "Superdeportivo",
+      "tipo": "Carro",
+      "motor": "V12 6.5L",
+      "combustible": "Gasolina",
+      "caracteristicas": "Edición limitada de pista, 770 caballos de fuerza, tracción integral y aerodinámica activa ALA 2.0.",
+      "precio_venta": 520000,
+      "precio_alquiler_dia": 2500,
+      "precio_alquiler_hora": 350,
+      "oferta_alquiler": "15% OFF Fin de Semana",
+      "imagen": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=600&q=80",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Lamborghini_Logo.svg/200px-Lamborghini_Logo.svg.png"
+    },
+    {
+      "codigo": 102,
+      "marca": "Rolls-Royce",
+      "modelo": "Phantom",
+      "categoria": "Ultra-Lujo",
+      "tipo": "Carro",
+      "motor": "V12 6.75L Twin-Turbo",
+      "combustible": "Gasolina",
+      "caracteristicas": "El estándar dorado del confort ejecutivo. Aislamiento acústico de nivel militar y techo de estrellas de fibra óptica.",
+      "precio_venta": 460000,
+      "precio_alquiler_dia": 3000,
+      "precio_alquiler_hora": 450,
+      "oferta_alquiler": null,
+      "imagen": "https://images.unsplash.com/photo-1632245889029-e406faaa34cd?auto=format&fit=crop&w=600&q=80",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/Rolls-Royce_Motor_Cars_logo.svg/150px-Rolls-Royce_Motor_Cars_logo.svg.png"
+    },
+    {
+      "codigo": 103,
+      "marca": "Ferrari",
+      "modelo": "SF90 Stradale",
+      "categoria": "Híbrido / Sport",
+      "tipo": "Carro",
+      "motor": "V8 Twin-Turbo + 3 Motores Eléctricos",
+      "combustible": "Híbrido Enchufable",
+      "caracteristicas": "Hiperdeportivo híbrido con 1,000 hp combinados. Aceleración de 0 a 100 km/h en solo 2.5 segundos.",
+      "precio_venta": 510000,
+      "precio_alquiler_dia": 2800,
+      "precio_alquiler_hora": 400,
+      "oferta_alquiler": "Especial de Pista",
+      "imagen": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Ferrari-Logo.svg/150px-Ferrari-Logo.svg.png"
+    }
+  ],
+  "motos": [
+    {
+      "codigo": 201,
+      "marca": "Ducati",
+      "modelo": "Panigale V4 R",
+      "categoria": "Superbike",
+      "tipo": "Moto",
+      "motor": "Desmosedici Stradale V4 998cc",
+      "combustible": "Gasolina Premium",
+      "caracteristicas": "Configuración pura de MotoGP homologada para calle. 221 caballos de fuerza con un peso ultraligero.",
+      "precio_venta": 45000,
+      "precio_alquiler_dia": 600,
+      "precio_alquiler_hora": 90,
+      "oferta_alquiler": "Hot Deal",
+      "imagen": "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=600&q=80",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Ducati_red_logo.svg/150px-Ducati_red_logo.svg.png"
+    },
+    {
+      "codigo": 202,
+      "marca": "BMW",
+      "modelo": "R 1250 GS Adventure",
+      "categoria": "Maxi-Trail / Touring",
+      "tipo": "Moto",
+      "motor": "Bóxer de 2 cilindros y 1254cc",
+      "combustible": "Gasolina",
+      "caracteristicas": "Diseñada para expediciones transcontinentales. Sistema de suspensión electrónica dinámica y ergonomía premium.",
+      "precio_venta": 32000,
+      "precio_alquiler_dia": 350,
+      "precio_alquiler_hora": 55,
+      "oferta_alquiler": null,
+      "imagen": "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=600&q=80",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BMW.svg/150px-BMW.svg.png"
+    }
+  ]
+}

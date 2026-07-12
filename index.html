@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Motors Elite Corp - Pink Premium Edition</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+    <style>
+        /* CONFIGURACIÓN DEL FONDO CON IMAGEN DE CARRO ROSADO */
+        body {
+            background: linear-gradient(180deg, rgba(26, 10, 22, 0.94) 0%, rgba(46, 14, 38, 0.97) 100%), 
+                        url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1200') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* NAVBAR ESTILO PREMIUM ROSADO OSCURO */
+        .premium-navbar {
+            background-color: rgba(36, 8, 29, 0.98) !important;
+            border-bottom: 3px solid #ff4b8b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* BUSCADOR ULTRA VISIBLE */
+        .search-highlight {
+            background-color: #1a0515 !important;
+            border: 2px solid #ff4b8b !important;
+            color: #ffffff !important;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 0 10px rgba(255, 75, 139, 0.3);
+            transition: all 0.3s ease;
+        }
+        .search-highlight:focus {
+            box-shadow: 0 0 15px rgba(255, 75, 139, 0.6) !important;
+            background-color: #240c1e !important;
+        }
+        .search-icon-box {
+            background-color: #ff4b8b !important;
+            border: 2px solid #ff4b8b !important;
+            color: white !important;
+        }
+
+        /* BOTONES DE NAVEGACIÓN ANIMADOS (INTERACTIVOS) */
+        .nav-anchor-btn {
+            background: rgba(255, 75, 139, 0.15);
+            color: #ffffff;
+            border: 2px solid #ff4b8b;
+            padding: 10px 24px;
+            font-weight: 700;
+            border-radius: 30px;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-anchor-btn:hover {
+            background: #ff4b8b;
+            color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(255, 75, 139, 0.4);
+        }
+
+        /* BIOGRAFÍA CORPORATIVA DE LA EMPRESA */
+        .about-corporate-box {
+            background: rgba(36, 12, 30, 0.75);
+            border-left: 5px solid #ff4b8b;
+            border-radius: 0 16px 16px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        /* TEXTOS DE TÍTULOS */
+        .main-title {
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            text-transform: uppercase;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.6);
+        }
+        .main-subtitle {
+            color: #ffb3d1 !important;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-weight: 800;
+            text-transform: uppercase;
+            position: relative;
+            padding-left: 18px;
+            color: #ffffff;
+            letter-spacing: 0.8px;
+        }
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 5px;
+            background-color: #ff4b8b;
+            border-radius: 3px;
+            box-shadow: 0 0 8px #ff4b8b;
+        }
+
+        /* DISEÑO DE TARJETAS PREMIUM */
+        .premium-card {
+            background-color: rgba(36, 12, 30, 0.85) !important;
+            border: 1px solid rgba(255, 75, 139, 0.2) !important;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        .premium-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 75, 139, 0.5) !important;
+            box-shadow: 0 12px 30px rgba(255, 75, 139, 0.25);
+        }
+
+        .card-img-wrapper {
+            overflow: hidden;
+            height: 210px;
+            cursor: pointer;
+        }
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .premium-card:hover .card-img-wrapper img {
+            transform: scale(1.04);
+        }
+
+        /* INSIGNIAS (BADGES) */
+        .offer-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #ff4b8b;
+            color: #ffffff;
+            padding: 5px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 8px;
+            z-index: 3;
+        }
+
+        .category-tag {
+            background-color: #4a153b;
+            color: #ffb3d1;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            display: inline-block;
+            border: 1px solid rgba(255, 75, 139, 0.2);
+        }
+
+        /* MATRIZ DE PRECIOS */
+        .price-matrix {
+            background-color: rgba(18, 5, 15, 0.75);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* BOTONES DE ACCIÓN */
+        .btn-rent {
+            background-color: transparent;
+            color: #00f0ff;
+            border: 1px solid #00f0ff;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+        .btn-rent:hover {
+            background-color: #00f0ff;
+            color: #111;
+        }
+
+        .btn-buy {
+            background-color: #ff4b8b;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+        .btn-buy:hover {
+            background-color: #e03673;
+            color: #fff;
+        }
+
+        /* ENTRADAS FORM */
+        .form-control, .form-select {
+            background-color: #240c1e !important;
+            border: 1px solid #4a153b !important;
+            color: #fff !important;
+        }
+
+        /* PIE DE PÁGINA (FOOTER) */
+        .academic-footer {
+            background-color: rgba(27, 7, 22, 0.98);
+            border-top: 3px solid #ff4b8b;
+            color: #ffffff;
+            padding: 45px 0 25px 0;
+            margin-top: 80px;
+        }
+        .profile-img-container img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #ff4b8b;
+            box-shadow: 0 0 15px rgba(255, 75, 139, 0.4);
+        }
+        .skill-badge {
+            background-color: #3b112f;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 1px solid #5c1b49;
+            display: inline-block;
+            margin: 4px;
+        }
+        .contact-link {
+            color: #ffb3d1;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 600;
+        }
+
+        /* ICONOS DE REDES SOCIALES ANIMADOS CON SUS COLORES OFICIALES */
+        .social-icons a {
+            font-size: 24px;
+            margin-right: 15px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            transform: translateY(-5px) scale(1.2);
+        }
+        .icon-facebook  { color: #1877f2; }
+        .icon-instagram { color: #e1306c; }
+        .icon-linkedin  { color: #0077b5; }
+        .icon-github    { color: #ffffff; }
+        .icon-whatsapp  { color: #25d366; }
+        .icon-tiktok    { color: #00f2fe; text-shadow: 2px 2px #fe2c55; }
+        .icon-youtube   { color: #ff0000; }
+
+        .modal-content {
+            background-color: #240c1e !important;
+            border: 1px solid #4a153b !important;
+            color: #fff !important;
+            border-radius: 16px;
+        }
+        .modal-header, .modal-footer {
+            border-color: #4a153b !important;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark premium-navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fa-solid fa-car-side text-white me-2"></i> LUXURY MOTORS
+            </a>
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="fa-solid fa-bars fs-4"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <div class="mx-auto my-2 my-lg-0" style="width: 100%; max-width: 550px;">
+                    <div class="input-group">
+                        <span class="input-group-text search-icon-box"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" id="searchInput" class="form-control search-highlight" placeholder="¿Qué auto o motocicleta de ensueño buscas hoy?">
+                    </div>
+                </div>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <button class="btn btn-link position-relative text-white p-2" data-bs-toggle="modal" data-bs-target="#cartModal" id="cartBtn">
+                            <i class="fa-solid fa-receipt fs-4"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCountBadge">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row mb-4">
+            <div class="col text-center">
+                <h1 class="main-title mb-2">Luxury Motors Elite Corp</h1>
+                <p class="main-subtitle mx-auto mb-4" style="max-width: 600px;">Infraestructura corporativa premium para la gestión y cierre formalizado de activos vehiculares.</p>
+                
+                <div class="d-flex justify-content-center gap-3 my-3">
+                    <button class="nav-anchor-btn" onclick="document.getElementById('seccion-vehiculos').scrollIntoView();">
+                        <i class="fa-solid fa-car"></i> Ver Autos
+                    </button>
+                    <button class="nav-anchor-btn" onclick="document.getElementById('seccion-motos').scrollIntoView();">
+                        <i class="fa-solid fa-motorcycle"></i> Ver Motos
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="about-corporate-box p-4">
+                    <h4 class="fw-bold text-white mb-2"><i class="fa-solid fa-building-shield me-2 text-pink" style="color:#ff4b8b;"></i> Nuestra Historia & Propósito</h4>
+                    <p class="small text-light mb-0" style="line-height: 1.7; opacity: 0.95;">
+                        Fundada bajo estándares de exclusividad y rendimiento, <b>Luxury Motors Elite Corp</b> se ha consolidado como la plataforma institucional líder en la gestión de vehículos e hiperdeportivos de alta gama. Nos dedicamos a conectar coleccionistas y entusiastas exigentes con los activos automotrices más sofisticados del mercado global. Nuestra misión trasciende la simple transacción; estructuramos soluciones integrales de venta privada y arrendamiento temporal con esquemas de validación tecnológica, garantizando un ecosistema seguro, moderno y de un prestigio sin precedentes.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5" id="seccion-vehiculos">
+            <h2 class="section-title h4 mb-4">Flotilla de Súper Deporte e Hyper-Lujo</h2>
+            <div class="row g-4" id="contenedor-vehiculos"></div>
+        </div>
+
+        <div class="mb-5" id="seccion-motos">
+            <h2 class="section-title h4 mb-4">Superbikes & Maxi-Trail de Alta Gama</h2>
+            <div class="row g-4" id="contenedor-motos"></div>
+        </div>
+    </div>
+
+    <footer class="academic-footer">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-12 col-md-5 text-center text-md-start">
+                    <h6 class="small fw-bold text-uppercase tracking-wider text-secondary mb-3">Contacto & Dirección</h6>
+                    <p class="small mb-1"><i class="fa-solid fa-location-dot me-2 text-danger"></i>Av. Independencia, Santo Domingo, RD</p>
+                    <p class="small mb-1"><i class="fa-solid fa-phone me-2 text-success"></i>+1 (829) 606-8140</p>
+                    <p class="small mb-3"><i class="fa-solid fa-envelope me-2 text-info"></i><a href="mailto:m.mena@oym.edu.do" class="contact-link">m.mena@oym.edu.do</a></p>
+                    
+                    <div class="social-icons justify-content-center justify-content-md-start d-flex flex-wrap gap-1">
+                        <a href="#" class="icon-facebook" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="icon-instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="icon-linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="icon-github" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://wa.me/18296068140" target="_blank" class="icon-whatsapp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="icon-tiktok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="icon-youtube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3 text-center">
+                    <h6 class="small fw-bold text-uppercase tracking-wider text-secondary mb-2">Tech Stack & Skills</h6>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <span class="skill-badge"><i class="fa-brands fa-windows text-primary"></i>.NET MAUI</span>
+                        <span class="skill-badge"><i class="fa-solid fa-database text-warning"></i>SQL</span>
+                        <span class="skill-badge"><i class="fa-brands fa-html5 text-danger"></i>HTML</span>
+                        <span class="skill-badge"><i class="fa-brands fa-css3-alt text-info"></i>CSS</span>
+                        <span class="skill-badge"><i class="fa-brands fa-js text-warning"></i>JS</span>
+                        <span class="skill-badge"><i class="fa-solid fa-file-excel text-success"></i>Excel</span>
+                        <span class="skill-badge"><i class="fa-solid fa-file-word text-primary"></i>Word</span>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 text-center text-md-end d-flex flex-column flex-md-row align-items-center justify-content-md-end">
+                    <div class="text-md-end text-center me-md-3 order-2 order-md-1 mt-2 mt-md-0">
+                        <h5 class="fw-bold mb-0">María Mercedes Mena</h5>
+                        <p class="small text-info mb-1">Estudiante de Ingeniería en Sistemas</p>
+                        <p class="small text-muted mb-0">Universidad O&M</p>
+                        <a href="#" class="small text-info text-decoration-none" data-bs-toggle="modal" data-bs-target="#biografiaModal">(Ver Biografía)</a>
+                    </div>
+                    <div class="profile-img-container order-1 order-md-2">
+                        <img src="mariafoto.jpg" alt="María Mercedes" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200'">
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary opacity-20 my-4">
+            <div class="text-center small text-secondary">
+                Creado por María Mercedes Mena — Proyecto 4 Luxury Motors Elite Corp
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body p-0 text-center position-relative">
+                    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+                    <img id="expandedModalImage" src="" alt="Vista Previa" class="img-fluid rounded shadow-lg" style="max-height: 85vh; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="biografiaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border: 1px solid #ff4b8b !important;">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-info"><i class="fa-solid fa-graduation-cap me-2"></i>Perfil Académico Profesional</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <img src="mariafoto.jpg" alt="María Mercedes" class="rounded-circle mb-3" style="width:110px; height:110px; object-fit:cover; border:3px solid #ff4b8b;" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200'">
+                    <h4 class="fw-bold mb-1">María Mercedes Mena</h4>
+                    <p class="text-secondary small">Estudiante de Ingeniería en Sistemas - Universidad O&M</p>
+                    <div class="p-3 bg-dark rounded border border-secondary border-opacity-25 text-start small text-light" style="line-height:1.6;">
+                        <b>Biografía:</b> María Mercedes – Estudiante universitaria de la carrera de Ingeniería en Sistemas en la Universidad O&M y desarrolladora web. Apasionada por la IA y el diseño de software de sistemas informáticos educativos modernos.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="rentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="rentModalTitle">Configurar Renta</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="rentProductCode">
+                    <input type="hidden" id="rentProductType">
+                    <div class="mb-3">
+                        <label class="form-label text-secondary small fw-bold">Modalidad de Arrendamiento</label>
+                        <select class="form-select" id="rentDurationType">
+                            <option value="dia" selected>Renta Diaria Completa</option>
+                            <option value="hora">Renta por Intervalo de Horas</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-secondary small fw-bold" id="rentQuantityLabel">Cantidad de Días</label>
+                        <input type="number" class="form-control" id="rentQuantity" value="1" min="1">
+                    </div>
+                    <div class="p-3 rounded bg-dark border border-secondary border-opacity-25 d-flex justify-content-between align-items-center mt-3">
+                        <span class="small text-muted">Subtotal Estimado:</span>
+                        <span class="fs-5 fw-bold text-warning" id="rentCalculatedPrice">$0 USD</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary btn-sm px-3" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-buy btn-sm px-4 fw-bold" id="confirmRentBtn">Vincular al Contrato</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-uppercase"><i class="fa-solid fa-receipt text-danger me-2"></i>Orden General de Compra/Renta</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4">
+                        <div class="col-12 col-xl-7">
+                            <h6 class="fw-bold mb-3 text-secondary small">Líneas de Activos</h6>
+                            <div class="table-responsive" style="max-height: 350px; overflow-y: auto;">
+                                <table class="table align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Foto</th>
+                                            <th>Descripción</th>
+                                            <th>Modalidad</th>
+                                            <th class="text-end">Subtotal</th>
+                                            <th class="text-center">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cartTableBody"></tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3 p-3 rounded bg-dark">
+                                <span class="fw-bold text-white small">Monto Bruto Global:</span>
+                                <span class="fs-4 fw-black text-success" id="cartTotalGlobal" style="font-weight: 900;">$0 USD</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-5 border-start border-secondary border-opacity-25">
+                            <h6 class="fw-bold mb-3 text-secondary small">Estructura de Facturación / Contrato</h6>
+                            <form id="billingForm" onsubmit="event.preventDefault();">
+                                <div class="mb-3">
+                                    <label class="form-label text-light small">Nombre Completo del Titular *</label>
+                                    <input type="text" class="form-control" id="customerName" placeholder="Ej. Juan Pérez" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-light small">Canal Financiero de Liquidación Moderno *</label>
+                                    <select class="form-select" id="paymentMethod" required>
+                                        <option value="" disabled selected>Seleccione método de pago moderno...</option>
+                                        <option value="Pasarela Móvil (Apple Pay / Google Wallet)">Billetera Móvil (Apple Pay / Google Wallet)</option>
+                                        <option value="Pasarela Global Stripe (Tarjetas Premium)">Pasarela Stripe Segura (Visa/Mastercard Elite)</option>
+                                        <option value="Criptoactivos Verificados Decentralizados">Criptoactivos Verificados (USDT / BTC / ETH)</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-light small">Fecha de Entrega o Retiro *</label>
+                                    <input type="date" class="form-control" id="deliveryDate" required>
+                                </div>
+                                <button type="button" id="checkoutBtn" class="btn btn-buy w-100 py-3 fw-bold text-uppercase mt-2">
+                                    <i class="fa-solid fa-file-pdf me-2"></i> Generar Cierre y PDF
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
